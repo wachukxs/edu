@@ -1,0 +1,45 @@
+<!DOCTYPE html> 
+<html> 
+<head>
+<title>Testing </title>
+
+<script>
+function showHint(str) {
+    if (str.length == 0) { 
+        document.getElementById("txtHint").innerHTML = "";
+        return;
+    } else {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+            }
+        };
+        xmlhttp.open("GET", "gethint.php?q=" + str, true);
+        xmlhttp.send();
+    }
+}
+</script>
+
+</head>
+<body> 
+
+<a href="history-ai.pdf" > hj</a>
+
+<object data="history-ai.pdf" > ui </object>
+
+
+
+<p><b>Start typing a name in the input field below:</b></p>
+<form> 
+First name: <input type="text" onkeyup="showHint(this.value)">
+</form>
+<p>Suggestions: <span id="txtHint"></span></p>
+
+
+</body> 
+
+
+
+<!-- Mirrored from www.w3schools.com/html/tryit.asp?filename=tryhtml5_video by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 13 Mar 2016 11:02:56 GMT -->
+</html>
